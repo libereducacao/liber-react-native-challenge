@@ -82,5 +82,3 @@ export const MotorCarroText = styled.Text`
   color: #888;
   font-weight: bold;
 `;
-
-
