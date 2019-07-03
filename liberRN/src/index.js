@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-
-import { Busca, Detalhes } from './views/carros'
-
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 
+import { Busca, Detalhes } from './views/carros'
 
 const StackNavigator = createStackNavigator({
   Busca: {
@@ -13,20 +11,15 @@ const StackNavigator = createStackNavigator({
     }
   },
   Detalhes: {
-    screen: Detalhes,
-    navigationOptions: {
-      title: '',
-    }
+    screen: Detalhes
   },
 },
 )
 
 let AppContainer = createAppContainer(StackNavigator);
 
-export default class Home extends Component {
+export default class Index extends Component {
   render() {
-    return (
-      <AppContainer />
-    );
+    return <AppContainer />
   }
 }

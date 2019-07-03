@@ -4,17 +4,17 @@ export const ContainerCarro = styled.View`
   flex-direction: row;
   padding: 20px;
   align-items: center;
-`; 
+`;
 
 export const FotoCarro = styled.View`
   align-items: center;
   padding: 10px;
-`; 
+`;
 
 export const InformacoesCarro = styled.View`
   align-items: flex-start;
   justify-content: center;
-`; 
+`;
 
 export const MarcaCarro = styled.Text`
   font-size: 12;

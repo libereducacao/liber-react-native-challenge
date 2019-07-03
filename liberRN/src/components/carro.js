@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
-
 import Image from 'react-native-remote-svg'
 
 import imgCarro from '../assets/img/car.svg';
@@ -15,20 +14,17 @@ import {
 const carro = ({ marca, modelo, preco, ...props }) => {
 
     preco = preco.split(',')
-
+    
     cambio = modelo.split(' ').pop()
-
-    if(cambio.includes('Aut')){
+    if (cambio.includes('Aut')) {
         cambio = 'AUTOMÁTICO'
         imgCambio = imgRaio;
-    }else{
-        // cambio = '';
-        // imgCambio = null
+    } else {
         cambio = 'MANUAL'
         imgCambio = imgEngrenagem;
     }
 
-    modelo = modelo.substr(0, modelo.indexOf('.')-1);
+    modelo = modelo.substr(0, modelo.indexOf('.') - 1);
 
     return (
         <TouchableWithoutFeedback onPress={() => props.verDetalhes()}>
