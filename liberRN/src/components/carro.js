@@ -12,11 +12,23 @@ import {
     MarcaCarro, ModeloCarro, ContainerCambioCarro, CambioCarro, LabelPrecoCarro, PrecoCarro
 } from '../styled-components/carro'
 
-const carro = ({ marca, modelo, cambio, preco, ...props }) => {
+const carro = ({ marca, modelo, preco, ...props }) => {
 
     preco = preco.split(',')
-    let imgCambio = null;
-    cambio === 'AUTOMÁTICO' ? imgCambio = imgRaio : imgCambio = imgEngrenagem;
+
+    cambio = modelo.split(' ').pop()
+
+    if(cambio.includes('Aut')){
+        cambio = 'AUTOMÁTICO'
+        imgCambio = imgRaio;
+    }else{
+        // cambio = '';
+        // imgCambio = null
+        cambio = 'MANUAL'
+        imgCambio = imgEngrenagem;
+    }
+
+    modelo = modelo.substr(0, modelo.indexOf('.')-1);
 
     return (
         <TouchableWithoutFeedback onPress={() => props.verDetalhes()}>

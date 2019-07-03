@@ -15,7 +15,7 @@ const itemMotorCarro = ({ icone, label, texto }) => {
             />
             <View style={{textAlign: 'center'}}>
                 <MotorCarroText>{label}</MotorCarroText>
-                <MotorCarroText style={{ color: '#000' }}>{texto}</MotorCarroText>
+                <MotorCarroText style={{ fontSize: 14, opacity: 1 }}>{texto}</MotorCarroText>
             </View>
         </MotorCarro>
     )

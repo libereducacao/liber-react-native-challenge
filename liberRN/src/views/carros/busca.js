@@ -10,7 +10,6 @@ import Carro from '../../components/carro'
 export default class Busca extends Component {
 
     state = {
-        busca: '',
         carros: [],
         carrosFiltrados: []
     }
@@ -18,7 +17,7 @@ export default class Busca extends Component {
     async componentDidMount() {
         let carros = await this.fetchCarros();
 
-        await this.setState({ carros, carrosFiltrados: carros })
+        this.setState({ carros, carrosFiltrados: carros })
     }
 
     async fetchCarros() {
@@ -53,14 +52,22 @@ export default class Busca extends Component {
         }
     }
 
+    buscar(valorBusca){
+
+        let carrosFiltrados = this.state.carros.filter(carro =>{
+            return carro.Modelo.toLowerCase().includes(valorBusca.toLowerCase())
+        })
+
+        this.setState({carrosFiltrados})
+    }
+
     render() {
         return (
             <Container>
                 <Titulo>Carros</Titulo>
                 <ContainerInput>
                     <Input
-                        onChangeText={(busca) => this.setState({ busca })}
-                        value={this.state.busca}
+                        onChangeText={(busca) => this.buscar(busca)}
                         placeholder="Ache seu carro..."
                         placeholderTextColor={'#080D2D'}
                     />
@@ -75,7 +82,11 @@ export default class Busca extends Component {
                             <Text>Carregando...</Text> :
                             this.state.carrosFiltrados.map(carro => {
                                 let { Marca, Modelo, Valor, CodigoFipe} = carro;
-                                return <Carro key={CodigoFipe} marca={Marca} modelo={Modelo} cambio="MANUAL" preco={Valor} verDetalhes={() => this.props.navigation.navigate('Detalhes')} />
+                                return <Carro key={CodigoFipe} marca={Marca} modelo={Modelo} preco={Valor} verDetalhes={() => {
+                                    this.props.navigation.navigate('Detalhes',{
+                                        carro
+                                    })
+                                }} />
                             })
                     }
                 </View>

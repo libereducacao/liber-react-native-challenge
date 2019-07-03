@@ -77,8 +77,9 @@ export const MotorCarro = styled.View`
 `;
 
 export const MotorCarroText = styled.Text`
-  font-size: 12;
+  font-size: 10;
   text-align: left;
-  color: #888;
+  color: #080D2D;
   font-weight: bold;
+  opacity: 0.5;
 `;
