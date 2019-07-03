@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import Image from 'react-native-remote-svg'
 
 import imgCarro from '../assets/img/car.svg';
@@ -13,8 +13,9 @@ import {
 
 const carro = ({ marca, modelo, preco, ...props }) => {
 
+    preco = preco.split(' ')[1]
     preco = preco.split(',')
-    
+
     cambio = modelo.split(' ').pop()
     if (cambio.includes('Aut')) {
         cambio = 'AUTOMÁTICO'
@@ -46,13 +47,12 @@ const carro = ({ marca, modelo, preco, ...props }) => {
                         <CambioCarro>{cambio}</CambioCarro>
                     </ContainerCambioCarro>
                     <LabelPrecoCarro>PREÇO</LabelPrecoCarro>
-                    <PrecoCarro>
-                        R$
-                <PrecoCarro style={{ fontSize: 20 }}>
-                            {preco[0]}
-                        </PrecoCarro>
-                        ,{preco[1]}
-                    </PrecoCarro>
+                    <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+                        <PrecoCarro>R$</PrecoCarro>
+                        <PrecoCarro style={{ fontSize: 20, marginLeft: 5 }}>{preco[0]}</PrecoCarro>
+                        <PrecoCarro>,{preco[1]}</PrecoCarro>
+                    </View>
+                    
                 </InformacoesCarro>
             </ContainerCarro>
         </TouchableWithoutFeedback>

@@ -11,7 +11,14 @@ const StackNavigator = createStackNavigator({
     }
   },
   Detalhes: {
-    screen: Detalhes
+    screen: Detalhes,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#F6F7F9',
+        elevation: 0,
+        shadowOpacity: 0,
+      },
+    }
   },
 },
 )

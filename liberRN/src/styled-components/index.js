@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 export const Container = styled.ScrollView`
   padding: 30px;
   flex: 1;
+  background-color: #F6F7F9;
 `;
 
 export const Titulo = styled.Text`
@@ -19,9 +20,12 @@ export const ContainerInput = styled.View`
   align-items: center;
   padding: 10px;
   margin-bottom: 20;
+  background: #FFF;
+  border-radius: 10;
 `;
 
 export const Input = styled.TextInput`
+  font-family: 'sans-serif';
   font-size: 16;
   text-align: left;
   color: #080D2D;

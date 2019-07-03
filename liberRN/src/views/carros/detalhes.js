@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Image from 'react-native-remote-svg'
 
 import { Titulo, Container } from '../../styled-components'
 import { FotoCarro, InformacoesCarro, ModeloCarro, ContainerMotorCarro } from '../../styled-components/carro'
-
 
 import ItemMotorCarro from '../../components/itemMotorCarro'
 import imgCarro from '../../assets/img/car.svg';
@@ -29,9 +28,9 @@ export default class detalhes extends Component {
         Modelo = Modelo.substr(0, Modelo.indexOf('.') - 1);
 
         return (
-            <Container>
+            <Container style={{ paddingTop: 5 }}>
                 <Titulo>Detalhes</Titulo>
-                <View style={{ marginBottom: 50 }}>
+                <View style={styles.shadow}>
                     <FotoCarro >
                         <Image
                             source={imgCarro}
@@ -40,10 +39,14 @@ export default class detalhes extends Component {
                     </FotoCarro>
                     <InformacoesCarro>
                         <ModeloCarro style={{ fontSize: 18, opacity: 0.7 }}>{Marca} - {Modelo} ({Ano})</ModeloCarro>
-                        <Text style={{ fontSize: 26, color: '#080D2D', fontWeight: 'bold' }}>
-                            <Text style={{ fontSize: 14, color: '#080D2D', fontWeight: 'bold' }}>{Valor[0]} </Text>
-                            {Valor[1]}*
-                        </Text>
+                        <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+                            <Text style={styles.valor}>
+                                {Valor[0]}
+                            </Text>
+                            <Text style={[styles.valor, { fontSize: 26, marginLeft: 5 }]}>
+                                {Valor[1]}*
+                            </Text>
+                        </View>
                         <ContainerMotorCarro>
                             <ItemMotorCarro
                                 icone={imgMotorArranque}
@@ -62,10 +65,31 @@ export default class detalhes extends Component {
                             />
 
                         </ContainerMotorCarro>
-                        <Text style={{ fontSize: 14, color: '#080D2D', opacity: 0.7 }}>Código FIPE: {CodigoFipe}</Text>
+                        <Text style={{ fontFamily: 'sans-serif', fontSize: 14, color: '#080D2D', opacity: 0.7 }}>Código FIPE: {CodigoFipe}</Text>
                     </InformacoesCarro>
                 </View>
             </Container>
         )
     }
 }
+
+let styles = StyleSheet.create({
+    valor: {
+        fontFamily: 'sans-serif',
+        fontSize: 14, color: '#080D2D',
+        fontWeight: 'bold'
+    },
+    shadow: {
+        padding: 20,
+        marginBottom: 50,
+        borderRadius: 20,
+        backgroundColor: '#FFF',
+        elevation: 1,
+        shadowColor: "#003CFF",
+        shadowRadius: 20,
+        shadowOffset: {
+            height: 0,
+            width: 0
+        }
+    }
+})
