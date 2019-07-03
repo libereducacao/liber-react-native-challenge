@@ -6,13 +6,14 @@ export default class BuscaContainer extends Component {
 
     state = {
         carros: [],
-        carrosFiltrados: []
+        carrosFiltrados: [],
+        loading: true,
     }
 
     async componentDidMount() {
         let carros = await this.fetchCarros();
 
-        this.setState({ carros, carrosFiltrados: carros })
+        this.setState({ carros, carrosFiltrados: carros, loading: false })
     }
 
     async fetchCarros() {
@@ -62,6 +63,7 @@ export default class BuscaContainer extends Component {
             buscar={(busca) => this.buscar(busca)}
             carros={this.state.carrosFiltrados}
             navigation={this.props.navigation}
+            loading={this.state.loading}
         />
     }
 }
