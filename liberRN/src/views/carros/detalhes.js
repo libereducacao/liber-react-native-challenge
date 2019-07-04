@@ -15,17 +15,22 @@ export default class detalhes extends Component {
 
     render() {
         let { Marca, Modelo, AnoModelo: Ano, Combustivel, Valor, CodigoFipe } = this.props.navigation.getParam('carro');
-        Valor = Valor.split(' ');
+        Valor = Valor.split(' '); //Retira o 'R$' de valor
 
+        //Atraves de uma expressao regular é procurado a potencia do carro, caso nao encontrado, a informacao será 'Indisponível'
         let regexPotencia = /([0-9]{2,4})cv/g;
         let Potencia = Modelo.match(regexPotencia);
         Potencia === null ? Potencia = "Indisponível" : '';
 
+        //Atraves de uma expressao regular é procurado e calculado as cilindradas do carro, caso nao encontrado, a informacao será 'Indisponível'
+        //Exemplo, um carro 1.0 tem 1000 cilindradas, 1.4 tem 1400, 1.6 tem 1600, é sempre o numero multiplicado por 1000
         let regexCC = /[0-9]\.[0-9]/g;
         let CC = Modelo.match(regexCC);
         CC === null ? CC = "Indisponível" : CC = (parseFloat(CC) * 1000).toLocaleString();
 
-        Modelo = Modelo.substr(0, Modelo.indexOf('.') - 1);
+        //Retira as informações extras que o modelo traz, cortando a string baseado nas cilindradas (1.0, 1.4, 1.6, etc)
+        //Caso o modelo nao possua essa informação, fica dificil saber aonde começa as informações adicionais, portanto, nada é feito com a string
+        Modelo.indexOf('.') === -1 ? '' : Modelo = Modelo.substr(0, Modelo.indexOf('.') - 1);
 
         return (
             <Container style={{ paddingTop: 5 }}>
@@ -81,6 +86,7 @@ let styles = StyleSheet.create({
     },
     shadow: {
         padding: 20,
+        paddingTop: 0,
         marginBottom: 50,
         borderRadius: 20,
         backgroundColor: '#FFF',

@@ -8,6 +8,7 @@ export const ContainerCarro = styled.View`
   background: #FFF;
   border-radius: 10;
   margin-bottom: 20;
+  padding: 20px;
 `;
 
 export const FotoCarro = styled.View`
@@ -44,8 +45,11 @@ export const ContainerCambioCarro = styled.View`
   justify-content: center;
   align-items: center;
   padding-left: 10px;
+  padding-right: 10px;
   height: 20;
   margin-bottom: 5;
+  background-color: #EBEEFB;
+  border-radius: 20;
 `;
 
 export const CambioCarro = styled.Text`
@@ -76,20 +80,31 @@ export const ContainerMotorCarro = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
+  height: 120;
+  margin-top: 30;
+  margin-bottom: 30;
 `;
 
 export const MotorCarro = styled.View`
   justify-content: space-around;
   align-items: center;
-  flex: 1;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  height: 160;
+`;
+
+export const MotorCarroIcone = styled.View`
+  align-items: center;
+  justify-content: center;
+  background-color: #3145C3;
+  opacity: 0.04;
+  border-radius: 16;
+  width: 73;
+  height: 73;
+  margin-bottom: 10;
 `;
 
 export const MotorCarroText = styled.Text`
   font-family: 'sans-serif';
-  font-size: 10;
+  font-size: 12;
   text-align: left;
   color: #080D2D;
   font-weight: bold;
