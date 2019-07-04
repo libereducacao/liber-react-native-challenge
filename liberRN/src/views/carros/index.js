@@ -1,2 +1,2 @@
-export { default as Busca } from './buscaContainer'
-export { default as Detalhes } from './detalhes'
+export { default as Busca } from './buscaContainer';
+export { default as Detalhes } from './detalhes';
