@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Image from 'react-native-remote-svg'
 
-import { Titulo, Container } from '../../styled-components'
+import { Titulo, ScrollContainer } from '../../styled-components'
 import { FotoCarro, InformacoesCarro, ModeloCarro, ContainerMotorCarro } from '../../styled-components/carro'
 
 import ItemMotorCarro from '../../components/itemMotorCarro'
@@ -33,7 +33,7 @@ export default class detalhes extends Component {
         Modelo.indexOf('.') === -1 ? '' : Modelo = Modelo.substr(0, Modelo.indexOf('.') - 1);
 
         return (
-            <Container style={{ paddingTop: 5 }}>
+            <ScrollContainer style={{ paddingTop: 5 }}>
                 <Titulo>Detalhes</Titulo>
                 <View style={styles.shadow}>
                     <FotoCarro >
@@ -73,7 +73,7 @@ export default class detalhes extends Component {
                         <Text style={{ fontFamily: 'sans-serif', fontSize: 14, color: '#080D2D', opacity: 0.7 }}>Código FIPE: {CodigoFipe}</Text>
                     </InformacoesCarro>
                 </View>
-            </Container>
+            </ScrollContainer>
         )
     }
 }
@@ -90,7 +90,7 @@ let styles = StyleSheet.create({
         marginBottom: 50,
         borderRadius: 20,
         backgroundColor: '#FFF',
-        elevation: 1,
+        elevation: 3,
         shadowColor: "#003CFF",
         shadowRadius: 20,
         shadowOffset: {

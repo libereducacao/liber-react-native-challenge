@@ -1,6 +1,12 @@
 import styled from 'styled-components/native'
 
-export const Container = styled.ScrollView`
+export const Container = styled.View`
+  padding: 30px;
+  flex: 1;
+  background-color: #F6F7F9;
+`;
+
+export const ScrollContainer = styled.ScrollView`
   padding: 30px;
   flex: 1;
   background-color: #F6F7F9;

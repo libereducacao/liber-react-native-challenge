@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import Image from 'react-native-remote-svg'
 
 import imgSearch from '../../assets/img/search.svg';
@@ -8,14 +8,14 @@ import imgLoading from '../../assets/img/loading.svg';
 import { Titulo, Container, ContainerInput, Input } from '../../styled-components'
 import Carro from '../../components/carro'
 
-const busca = (props) => {
+const busca = ({carros, loading, erro, buscar, navigation}) => {
 
     return (
         <Container>
             <Titulo>Carros</Titulo>
             <ContainerInput>
                 <Input
-                    onChangeText={(busca) => props.buscar(busca)}
+                    onChangeText={(busca) => buscar(busca)}
                     placeholder="Ache seu carro..."
                     placeholderTextColor={'#080D2D'}
                 />
@@ -24,9 +24,10 @@ const busca = (props) => {
                     style={{ width: 18, height: 18 }}
                 />
             </ContainerInput>
-            <View style={{ marginBottom: 50, width: '100%' }}>
+            <Text style={{width: '100%', textAlign: 'center', color: 'red'}}>{erro}</Text>
+            <ScrollView style={{ width: '100%' }}>
                 {
-                    props.loading ?
+                    loading ?
                         <View style={{ width: '100%', alignItems: 'center' }}>
                             <Image
                                 source={imgLoading}
@@ -34,18 +35,18 @@ const busca = (props) => {
                             />
                         </View>
                         :
-                        props.carros.map(carro => {
+                        carros.map(carro => {
                             let { Marca, Modelo, Valor, CodigoFipe } = carro;
                             return <Carro key={CodigoFipe} marca={Marca} modelo={Modelo} preco={Valor}
                                 verDetalhes={() => {
-                                    props.navigation.navigate('Detalhes', {
+                                    navigation.navigate('Detalhes', {
                                         carro
                                     })
                                 }}
                             />
                         })
                 }
-            </View>
+            </ScrollView>
         </Container>
     )
 }
