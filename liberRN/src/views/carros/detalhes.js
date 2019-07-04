@@ -89,7 +89,7 @@ export default class detalhes extends Component {
             }}
             >
               Código FIPE:
-              {CodigoFipe}
+              {' ' + CodigoFipe}
             </Text>
           </InformacoesCarro>
         </View>
