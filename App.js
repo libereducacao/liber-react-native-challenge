@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -33,18 +33,29 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <LinearGradient
-        colors={['#F6F7F9', '#F6F7F9', '#F6F7F9']}
-        style={styles.container}
-      >
-        {this.state.fontLoaded && (
-          <Text style={{ fontFamily: 'OpenSans-Bold' }}>
-            Fonts have been loaded successfully
-          </Text>
-        )}
-        {!this.state.fontLoaded && <Text>No fonts have been loaded</Text>}
-      </LinearGradient>
-    );
+    if (this.state.fontLoaded) {
+      return (
+        <LinearGradient
+          colors={['#F6F7F9', '#F6F7F9', '#F6F7F9']}
+          style={styles.container}
+        >
+          {this.state.fontLoaded && (
+            <Text style={{ fontFamily: 'OpenSans-Bold' }}>
+              Fonts have been loaded successfully
+            </Text>
+          )}
+          {!this.state.fontLoaded && <Text>No fonts have been loaded</Text>}
+        </LinearGradient>
+      );
+    } else {
+      return (
+        <LinearGradient
+          colors={['#F6F7F9', '#F6F7F9', '#F6F7F9']}
+          style={[styles.container, { justifyContent: 'center' }]}
+        >
+          <ActivityIndicator />
+        </LinearGradient>
+      );
+    }
   }
 }
