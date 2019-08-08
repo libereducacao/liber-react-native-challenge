@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingVertical: 34,
     paddingHorizontal: 36
+  },
+  heading: {
+    fontFamily: 'OpenSans-Bold',
+    fontSize: 33,
+    color: '#080D2D',
+    lineHeight: 40,
+    marginBottom: 31
   }
 });
 
@@ -46,12 +53,7 @@ export default class App extends Component {
           style={styles.container}
         >
           <StatusBar hidden />
-          {this.state.fontLoaded && (
-            <Text style={{ fontFamily: 'OpenSans-Bold' }}>
-              Fonts have been loaded successfully
-            </Text>
-          )}
-          {!this.state.fontLoaded && <Text>No fonts have been loaded</Text>}
+          <Text style={styles.heading}>Carros</Text>
         </LinearGradient>
       );
     } else {
