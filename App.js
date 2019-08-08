@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+  StatusBar
+} from 'react-native';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -39,6 +45,7 @@ export default class App extends Component {
           colors={['#F6F7F9', '#F6F7F9', '#F6F7F9']}
           style={styles.container}
         >
+          <StatusBar hidden />
           {this.state.fontLoaded && (
             <Text style={{ fontFamily: 'OpenSans-Bold' }}>
               Fonts have been loaded successfully
@@ -53,6 +60,7 @@ export default class App extends Component {
           colors={['#F6F7F9', '#F6F7F9', '#F6F7F9']}
           style={[styles.container, { justifyContent: 'center' }]}
         >
+          <StatusBar hidden />
           <ActivityIndicator />
         </LinearGradient>
       );
