@@ -4,7 +4,10 @@ import {
   Text,
   View,
   ActivityIndicator,
-  StatusBar
+  StatusBar,
+  TextInput,
+  Image,
+  TouchableOpacity
 } from 'react-native';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -22,6 +25,22 @@ const styles = StyleSheet.create({
     color: '#080D2D',
     lineHeight: 40,
     marginBottom: 31
+  },
+  inputContainer: {
+    backgroundColor: '#FFFFFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 21,
+    borderRadius: 13,
+    marginBottom: 29
+  },
+  input: {
+    flex: 1,
+    height: 55,
+    fontFamily: 'OpenSans-Bold',
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#080D2D'
   }
 });
 
@@ -54,6 +73,12 @@ export default class App extends Component {
         >
           <StatusBar hidden />
           <Text style={styles.heading}>Carros</Text>
+          <View style={styles.inputContainer}>
+            <TextInput style={styles.input} value="Ache seu carro..." />
+            <TouchableOpacity>
+              <Image source={require('./assets/images/search.png')} />
+            </TouchableOpacity>
+          </View>
         </LinearGradient>
       );
     } else {
