@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
+import { getCarTypes } from './utils/treatData';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,6 +60,10 @@ export default class App extends Component {
       'OpenSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf')
     });
 
+    const data = await getCarTypes();
+
+    console.log(data);
+    
     this.setState({
       fontLoaded: true
     });
