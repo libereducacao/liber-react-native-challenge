@@ -7,7 +7,8 @@ import {
   StatusBar,
   TextInput,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from 'react-native';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -46,6 +47,251 @@ const styles = StyleSheet.create({
   }
 });
 
+const mock = [
+  {
+    AnoModelo: 32000,
+    CodigoFipe: '079002-8',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.6 8V',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 42.645,00'
+  },
+  {
+    AnoModelo: 2019,
+    CodigoFipe: '079002-8',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.6 8V',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 33.712,00'
+  },
+  {
+    AnoModelo: 2018,
+    CodigoFipe: '079002-8',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.6 8V',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 31.298,00'
+  },
+  {
+    AnoModelo: 2017,
+    CodigoFipe: '079002-8',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.6 8V',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 28.747,00'
+  },
+  {
+    AnoModelo: 2016,
+    CodigoFipe: '079002-8',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.6 8V',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 26.764,00'
+  },
+  {
+    AnoModelo: 32000,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 47.350,00'
+  },
+  {
+    AnoModelo: 2019,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 37.245,00'
+  },
+  {
+    AnoModelo: 2018,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 34.462,00'
+  },
+  {
+    AnoModelo: 2017,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 31.467,00'
+  },
+  {
+    AnoModelo: 2016,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 29.062,00'
+  },
+  {
+    AnoModelo: 2015,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 27.909,00'
+  },
+  {
+    AnoModelo: 2014,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 27.030,00'
+  },
+  {
+    AnoModelo: 2013,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 26.077,00'
+  },
+  {
+    AnoModelo: 2012,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 23.999,00'
+  },
+  {
+    AnoModelo: 2011,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 22.986,00'
+  },
+  {
+    AnoModelo: 2010,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 21.093,00'
+  },
+  {
+    AnoModelo: 2009,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 19.055,00'
+  },
+  {
+    AnoModelo: 2008,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 17.035,00'
+  },
+  {
+    AnoModelo: 2007,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 15.495,00'
+  },
+  {
+    AnoModelo: 2006,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 14.426,00'
+  },
+  {
+    AnoModelo: 2005,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 13.115,00'
+  },
+  {
+    AnoModelo: 2004,
+    CodigoFipe: '079001-0',
+    Combustivel: 'Gasolina',
+    Marca: 'Fyber',
+    MesReferencia: 'agosto de 2019 ',
+    Modelo: 'Buggy 2000W 1.8 8V/ 1.8 8V Flex',
+    SiglaCombustivel: 'G',
+    TipoVeiculo: 1,
+    Valor: 'R$ 11.544,00'
+  }
+];
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -55,6 +301,8 @@ export default class App extends Component {
     };
 
     this.renderList = this.renderList.bind(this);
+    this.splitString = this.splitString.bind(this);
+    this.splitPrice = this.splitPrice.bind(this);
   }
 
   async componentDidMount() {
@@ -66,13 +314,33 @@ export default class App extends Component {
     //const data = await getCarTypes();
 
     this.setState({
-      fontLoaded: true,
+      fontLoaded: true
       //data
     });
   }
 
+  splitString(modelo) {
+    return modelo.split(' ', 2).join(' ');
+  }
+
+  splitPrice(price) {
+    return price.split(' ')[1].split(',')[0];
+  }
+
   renderList() {
-    return <Card />;
+    return (
+      <FlatList
+        data={mock}
+        keyExtractor={(item, index) => `${item.AnoModelo}-${index}`}
+        renderItem={({ item }) => (
+          <Card
+            marca={item.Marca}
+            preço={this.splitPrice(item.Valor)}
+            modelo={this.splitString(item.Modelo)}
+          />
+        )}
+      />
+    );
   }
 
   render() {
