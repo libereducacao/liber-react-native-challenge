@@ -311,11 +311,11 @@ export default class App extends Component {
       'OpenSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf')
     });
 
-    //const data = await getCarTypes();
+    const data = await getCarTypes();
 
     this.setState({
-      fontLoaded: true
-      //data
+      fontLoaded: true,
+      data
     });
   }
 
@@ -330,7 +330,7 @@ export default class App extends Component {
   renderList() {
     return (
       <FlatList
-        data={mock}
+        data={this.state.data}
         keyExtractor={(item, index) => `${item.AnoModelo}-${index}`}
         renderItem={({ item }) => (
           <Card

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { TouchableOpacity, Text, View, StyleSheet, Image } from 'react-native';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +49,7 @@ const TransmissionInfo = ({ type }) => (
 );
 
 const componentName = ({ marca, modelo, transmission, preço }) => (
-  <View style={styles.container}>
+  <TouchableOpacity style={styles.container}>
     <Image style={styles.image} source={require('../assets/images/car.png')} />
     <View style={styles.infoContainer}>
       <Text
@@ -120,7 +121,7 @@ const componentName = ({ marca, modelo, transmission, preço }) => (
         </Text>
       </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 export default componentName;
