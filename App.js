@@ -12,6 +12,7 @@ import {
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
 import { getCarTypes } from './utils/treatData';
+import Card from './components/Card';
 
 const styles = StyleSheet.create({
   container: {
@@ -52,6 +53,8 @@ export default class App extends Component {
     this.state = {
       fontLoaded: false
     };
+
+    this.renderList = this.renderList.bind(this);
   }
 
   async componentDidMount() {
@@ -60,12 +63,16 @@ export default class App extends Component {
       'OpenSans-Regular': require('./assets/fonts/OpenSans-Regular.ttf')
     });
 
-    const data = await getCarTypes();
+    //const data = await getCarTypes();
 
     this.setState({
       fontLoaded: true,
-      data
+      //data
     });
+  }
+
+  renderList() {
+    return <Card />;
   }
 
   render() {
@@ -83,6 +90,7 @@ export default class App extends Component {
               <Image source={require('./assets/images/search.png')} />
             </TouchableOpacity>
           </View>
+          {this.renderList()}
         </LinearGradient>
       );
     } else {
