@@ -3,7 +3,7 @@
 ## Index
 
 - [Desafio React Native - Liber](#Desafio-React-Native---Liber)
-	- [Index](#Index)
+	- [**Index**](#Index)
 	- [**Introdução**](#Introdu%C3%A7%C3%A3o)
 	- [**Descrição**](#Descri%C3%A7%C3%A3o)
 	- [**Apresentação**](#Apresenta%C3%A7%C3%A3o)
@@ -59,4 +59,4 @@ Você deverá fazer um fork desse repositório e enviar um pull request com a su
 
 ## **Observações Finais e Prazo**
 
-O desafio deverá ser entregue em até 3 dias após o recebimento.
+O desafio deverá ser entregue em até 48 horas após o recebimento.
