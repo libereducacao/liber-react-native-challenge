@@ -122,6 +122,8 @@ export default function Busca({navigation}) {
         renderItem={item => <CarItem carro={item} navigation={navigation} />}
         keyExtractor={(item, index) => index.toString()}
         ListFooterComponent={renderFooter}
+        legacyImplementation={false}
+        disableVirtualization
       />
     </View>
   );
