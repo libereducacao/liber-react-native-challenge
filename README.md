@@ -8,6 +8,7 @@
     - [Lista de modelos de carros](#lista-de-modelos-de-carros)
     - [Busca por modelos](#busca-por-modelos)
     - [Tratamento String](#tratamento-string)
+  - [**Tela Detalhes**](#tela-detalhes)
   - [**Execução**](#execu%c3%a7%c3%a3o)
 
 
@@ -53,7 +54,7 @@ useEffect(() => {
 ```
 
 
-Com o vetor com os códigos das marcas disponíveis o app realiza outra requisição a api para cada marca, recebendo um vetor de objetos com os modelos disponiveis e um vetor de objetos com os anos. Após isso o app tenta fazer uma requisição com a combinação entre anos e modelos, caso a requisição retorne com sucesso o objeto do carro é adicionado ao vetor de carros:
+Com o vetor com os códigos das marcas disponíveis o app realiza outra requisição a API para cada marca, recebendo um vetor de objetos com os modelos disponiveis e um vetor de objetos com os anos. Após isso o app tenta fazer uma requisição com a combinação entre anos e modelos, caso a requisição retorne com sucesso o objeto do carro é adicionado ao vetor de carros:
 ```
 const [carros, setCarros] = useState([]);
 ...
@@ -120,6 +121,15 @@ Para tratar a String do modelo e exibir somente parte da informação mostrada u
 ```
 split(new RegExp('[0-9]\\.')
 ```
+
+## Tela Detalhes
+
+Para a navegação entre as telas foi utilizado o react-navigation, onde ao clicar em um dos modelos de carros da lista a tela de Detalhes é chamada, passando junto dela uma propriedade chamada "carro" que por sua vez é um objeto contendo todas as informações recebidas da API sobre aquele modelo:
+
+```
+onPress={() => navigation.navigate('Detalhes', {carro: carro.item})}
+```
+
 
 ## **Execução**
 
