@@ -123,5 +123,6 @@ split(new RegExp('[0-9]\\.')
 
 ## **Imagens do aplicativo em execução**
 
-|Lista de modelos| Busca por modelo| Detalhes|
-|<img src="/imgs/lista-modelos.jpg" />|<img src="/imgs/buca-modelo.jpg" />|<img src="/imgs/detalhes.jpg" />|
+<img src="/imgs/lista-modelos.jpg" />
+<img src="/imgs/buca-modelo.jpg" />
+<img src="/imgs/detalhes.jpg" />
