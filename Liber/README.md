@@ -121,6 +121,8 @@ Para tratar a String do modelo e exibir somente parte da informação mostrada u
 split(new RegExp('[0-9]\\.')
 ```
 
-## **Imagens do aplicativo em execução**
+## **Execução**
+
+Para ver imagens do aplicativo em execução acesse a pasta imgs dentro da pasta Liber
 
 
