@@ -1,10 +1,10 @@
 # Desafio React Native - Liber
 
 ## Index
- [Desafio React Native - Liber](#Desafio-React-Native---Liber)
-	- [**Index**](#Index)
-	- [**Instalação**](#Instalação)
-	- [**Detalhes da solução**](#Detalhes-da-solução)
+- [Desafio React Native - Liber](#desafio-react-native---liber)
+  - [Index](#index)
+  - [**Instalação**](#instala%c3%a7%c3%a3o)
+  - [**Detalhes da solução**](#detalhes-da-solu%c3%a7%c3%a3o)
 
 
 ## **Instalação**
