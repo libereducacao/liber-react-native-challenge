@@ -8,7 +8,7 @@ import Lighting from '../assets/lighting-button.png';
 export default function CarItem({carro, navigation}) {
   const info = carro.item;
 
-  const Cambio = function() {
+  const Cambio = () => {
     if (info.Modelo.includes('Aut')) {
       return (
         <View style={styles.cambioView}>

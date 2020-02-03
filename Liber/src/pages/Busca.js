@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   ActivityIndicator,
+  StatusBar,
   StyleSheet,
 } from 'react-native';
 
@@ -20,7 +21,9 @@ export default function Busca({navigation}) {
   const [loading, setLoading] = useState(true);
   const [marcas, setMarcas] = useState([1]);
   const [carros, setCarros] = useState([]);
+  const [carrosFiltrados, setCarrosFiltrados] = useState();
 
+  //Carrega a lista de códigos das marcas disponiveis
   useEffect(() => {
     async function loadMarcas() {
       const response = await api.get('/carros/marcas');
@@ -64,6 +67,7 @@ export default function Busca({navigation}) {
       });
 
       setLoading(false);
+      setPage(prevValue => prevValue + 1);
     }
 
     loadCarros();
@@ -81,8 +85,23 @@ export default function Busca({navigation}) {
     );
   };
 
+  //realiza a busca
+  const handleFiltro = async busca => {
+    setLoading(true);
+    let cars = carros.filter(
+      carro =>
+        carro.Marca.includes(busca) ||
+        carro.Marca.includes(busca.toUpperCase()) ||
+        carro.Modelo.includes(busca) ||
+        carro.Modelo.includes(busca.toUpperCase()),
+    );
+    setCarrosFiltrados(cars);
+    setLoading(false);
+  };
+
   return (
     <View style={styles.fundo}>
+      <StatusBar backgroundColor="#F6F7F9" barStyle="dark-content" />
       <Text style={styles.titulo}>Carros</Text>
       <View style={styles.inputView}>
         <TextInput
@@ -91,19 +110,18 @@ export default function Busca({navigation}) {
           placeholderTextColor="#080D2D"
           autoCapitalize="words"
           autoCorrect={false}
-          onChangeText={() => {}}
+          onChangeText={busca => {
+            handleFiltro(busca);
+          }}
         />
         <Image style={styles.searchImg} source={Search} />
       </View>
       <FlatList
-        data={carros}
+        data={carrosFiltrados || carros}
         style={styles.scroll}
         renderItem={item => <CarItem carro={item} navigation={navigation} />}
         keyExtractor={(item, index) => index.toString()}
-        onEndReached={() => setPage(prevValue => prevValue + 1)}
-        onEndReachedThreshold={0.25}
         ListFooterComponent={renderFooter}
-        disableVirtualization
       />
     </View>
   );
