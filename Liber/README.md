@@ -8,7 +8,7 @@
     - [Lista de modelos de carros](#lista-de-modelos-de-carros)
     - [Busca por modelos](#busca-por-modelos)
     - [Tratamento String](#tratamento-string)
-  - [**Imagens do aplicativo em execução**](#imagens-do-aplicativo-em-execu%c3%a7%c3%a3o)
+  - [**Execução**](#execu%c3%a7%c3%a3o)
 
 
 ## **Instalação**
