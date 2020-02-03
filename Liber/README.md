@@ -124,4 +124,4 @@ split(new RegExp('[0-9]\\.')
 ## **Imagens do aplicativo em execução**
 
 |Lista de modelos| Busca por modelo| Detalhes|
-|![](https://imgur.com/wG0j7Il)|![](https://imgur.com/zLgT7Wr)|![](https://imgur.com/Iz97owD)|
+|<img src="https://imgur.com/wG0j7Il" />|<img src="https://imgur.com/zLgT7Wr" />|<img src= "https://imgur.com/Iz97owD" />|
