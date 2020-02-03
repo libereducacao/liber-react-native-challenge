@@ -1,28 +1,55 @@
 import React from 'react';
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 import Car from '../assets/car.png';
 import Settings from '../assets/settings.png';
+import Lighting from '../assets/lighting-button.png';
 
-export default function CarItem() {
-  return (
-    <View style={styles.carro}>
-      <Image source={Car} />
-      <View style={styles.infoCarro}>
-        <Text style={styles.marcaTxt}>MARCA</Text>
-        <Text style={styles.modeloTxt}>Modelo</Text>
+export default function CarItem({carro, navigation}) {
+  const info = carro.item;
+
+  const Cambio = function() {
+    if (info.Modelo.includes('Aut')) {
+      return (
+        <View style={styles.cambioView}>
+          <Image source={Lighting} />
+          <Text style={styles.cambioTxt}>AUTOMÁTICO</Text>
+        </View>
+      );
+    } else if (info.Modelo.includes('Mec')) {
+      return (
         <View style={styles.cambioView}>
           <Image source={Settings} />
           <Text style={styles.cambioTxt}>MANUAL</Text>
         </View>
+      );
+    }
+    return <View />;
+  };
+
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Detalhes', {carro: carro.item})}
+      style={styles.carro}>
+      <Image source={Car} />
+      <View style={styles.infoCarro}>
+        <Text style={styles.marcaTxt}>{info.Marca}</Text>
+        <Text style={styles.modeloTxt}>
+          {info.Modelo.split(new RegExp('[0-9]\\.'))[0]}
+        </Text>
+        {Cambio()}
         <Text style={styles.marcaTxt}>PREÇO</Text>
         <View style={styles.precoView}>
-          <Text style={styles.precoTxt}>R$</Text>
-          <Text style={[styles.precoTxt, {fontSize: 20}]}>49.571</Text>
-          <Text style={styles.precoTxt}>,00</Text>
+          <Text style={styles.precoTxt}>{info.Valor.split(' ')[0]} </Text>
+          <Text style={[styles.precoTxt, {fontSize: 20}]}>
+            {info.Valor.split(' ')[1].split(',')[0]}
+          </Text>
+          <Text style={styles.precoTxt}>
+            ,{info.Valor.split(' ')[1].split(',')[1]}
+          </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

@@ -7,6 +7,7 @@ import Detalhes from './pages/Detalhes';
 const MainNavigator = createStackNavigator(
   {
     Home: Busca,
+    Detalhes: Detalhes,
   },
   {
     defaultNavigationOptions: {
