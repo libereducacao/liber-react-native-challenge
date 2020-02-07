@@ -14,8 +14,9 @@
 
 <p align="center">
   <a href="#memo-desafio">Desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#iphone-aplicação">Aplicação</a>
+  <a href="#iphone-aplicação">Aplicação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#clipboard-executando">Executando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias">Tecnologias</a>
 </p>
 
 ## :memo: Desafio
@@ -31,19 +32,56 @@ Tendo ainda como base para a interface, o protótipo proposto por eles em [Prot�
 
 [Repositório Desafio](https://github.com/libereducacao/liber-react-native-challenge)
 
+## :clipboard: Executando
+
+Com a aplicação em sua máquina, execute o comando yarn na pasta raiz do projeto para baixar todas as depêndencias necessárias para rodar a aplicação.
+
+<h4> Dependendo de qual dispositivo for rodar a aplicação, inicie o projeto em modo desenvolvimento com o seguinte comando: </h4>
+
+<h4> iOS: (funciona apenas em sistema MacOS) </h4>
+
+````
+react-native run-ios
+````
+
+<h5>
+Para testes, utilize emulador como o Simulador do XCode.
+</h5>
+
+<h4> Android </h4>
+
+````
+react-native start
+````
+
+e em seguida, rodar o comando:
+
+````
+react-native run-android
+````
+
+<h5>
+Para testes, utilize dispositivo físico ou emulador como o AVD do AndroidStudio.
+</h5>
+
 ## :iphone: Aplicação
 
-<h4>Tela Principal</h4>
+<h3>Tela Principal</h3>
 
-Em questões de funcionalidade, em sua página inicial, a aplicação inicia realizando uma requisição à API, retornando um array de objetos contendo as marcas dos carro, a qual a aplicação escolhe uma marca aletoriamente, e então retorna uma lista dos carros apenas da marca escolhida, assim, apresentando algumas informações de cada carro, como Modelo(informação que recebeu tratamento para ficar melhor apresentável), Tipo de Câmbio(Manual ou Automático, podendo ainda essa informação não ser retornada da requisição),
+Em questões de funcionalidade, em sua tela inicial, a aplicação inicia realizando uma requisição à API, retornando um array de objetos contendo as marcas dos carro, a qual a aplicação escolhe uma marca aletoriamente, e então retorna uma lista dos carros apenas da marca escolhida, assim, apresentando algumas informações de cada carro, como Modelo(informação que recebeu tratamento para ficar melhor apresentável), Tipo de Câmbio(Manual ou Automático, podendo ainda essa informação não ser retornada da requisição),
 
 Essa funcionalidade de "sortear" uma marca acontece toda vez que a aplicação é aberta.
 
-Ainda na página inicial, existe um campo de busca, que filtra a lista de carros pelo Modelo, conforme o usuário digita o nome.
+Ainda na tela inicial, existe um campo de busca, que filtra a lista de carros pelo Modelo, conforme o usuário digita o nome.
 
-<h4>Tela de Detalhe</h4>
+<h3>Tela de Detalhe</h3>
 
-Ao seleciona um carro da lista apresentada na página principal, o usuário é redirecionado para a página de detalhe do carro selecionado.
+Ao seleciona um carro da lista apresentada na tela principal, o usuário é redirecionado para a tela de detalhe do carro selecionado, onde é realizada uma nova requisição à API para retornar mais informações a respeito do carro selecionado.
+
+Nesse tela são exibidas informaçoes como Marca, Modelo, Ano, Valor, Tipo de Combustível, Código e etc.
+
+O Valor de um mesmo carro varia de acordo com o ano do carro, e por isso achei válido acrescentar uma funcionalidade que não estava no escopo original.
+Pela forma como tem que ser feita a requisição à API, é preciso informar primeiro o ano do carro, para então se obter as informações detalhadas do mesmo, como o Valor, por exemplo. Em sua primeira requisição, é exibido o ano mais atual do carro. Por isso incluí um Picker de seleção listando os anos disponíveis do carro seleciona, bastando o usuário apenas selecionar o ano desejado no Picker para saber o Valor do carro em outro ano.
 
 ## :rocket: Tecnologias
 
