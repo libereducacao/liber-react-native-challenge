@@ -3,11 +3,9 @@ import { ActivityIndicator } from 'react-native';
 
 import api from '../../services/api';
 import car from '../../assets/car.png';
-import bomb from '../../assets/bomb.png';
-import gauge from '../../assets/gauge.png';
-import starter from '../../assets/starter.png';
 
 import utilArray from '../../utils/utilArray';
+import CardDetailInfo from '../../components/CardDetailInfo';
 
 import {
   Container,
@@ -19,11 +17,7 @@ import {
   TypeCurrency,
   ValueCurrency,
   MoreInfo,
-  MoreInfoContainer,
-  LogoContainer,
   Label,
-  Value,
-  ImageLogo,
   InfoContainer,
   CodFipe,
   YearPicker,
@@ -67,6 +61,8 @@ export default function Detail({ navigation }) {
     loadCar();
   }, [year]); // eslint-disable-line
 
+  const { Combustivel, Valor, CodigoFipe } = detailCar;
+
   return (
     <Container>
       {loading ? (
@@ -78,7 +74,7 @@ export default function Detail({ navigation }) {
             <YearPicker
               mode="dialog"
               selectedValue={year}
-              onValueChange={(itemValue, itemIndex) => setYear(itemValue)}
+              onValueChange={itemValue => setYear(itemValue)}
             >
               {arrayYears.map(item => (
                 <YearPicker.Item
@@ -96,35 +92,29 @@ export default function Detail({ navigation }) {
             <Info>{`${carItem.marca} - ${carItem.modelo} (${detailCar.AnoModelo})`}</Info>
             <ValueContainer>
               <TypeCurrency>R$</TypeCurrency>
-              <ValueCurrency>{detailCar.Valor}</ValueCurrency>
+              <ValueCurrency>{Valor}</ValueCurrency>
             </ValueContainer>
             <MoreInfo>
-              <MoreInfoContainer>
-                <LogoContainer>
-                  <ImageLogo source={starter} />
-                </LogoContainer>
-                <Label>COMBUSTÍVEL</Label>
-                <Value>{detailCar.Combustivel}</Value>
-              </MoreInfoContainer>
-              <MoreInfoContainer>
-                <LogoContainer>
-                  <ImageLogo source={bomb} />
-                </LogoContainer>
-                <Label>POTÊNCIA</Label>
-                <Value>Indisponível</Value>
-                {/* Não identifiquei valor retornado da API que correspondesse a tal campo */}
-              </MoreInfoContainer>
-              <MoreInfoContainer>
-                <LogoContainer>
-                  <ImageLogo source={gauge} />
-                </LogoContainer>
-                <Label>CILINDRADAS</Label>
-                <Value>Indisponível</Value>
-                {/* Não identifiquei valor retornado da API que correspondesse a tal campo */}
-              </MoreInfoContainer>
+              <CardDetailInfo
+                value={Combustivel}
+                label="COMBUSTÍVEL"
+                image="starter"
+              />
+              <CardDetailInfo
+                value="Indisponível"
+                label="POTÊNCIA"
+                image="bomb"
+              />
+              {/* Não identifiquei valor retornado da API que correspondesse a tal campo, por isso é passado o valor "Indisponível" */}
+              <CardDetailInfo
+                value="Indisponível"
+                label="CILINDRADAS"
+                image="gauge"
+              />
+              {/* Não identifiquei valor retornado da API que correspondesse a tal campo, por isso é passado o valor "Indisponível" */}
             </MoreInfo>
           </InfoContainer>
-          <CodFipe>Código FIPE: {detailCar.CodigoFipe}</CodFipe>
+          <CodFipe>Código FIPE: {CodigoFipe}</CodFipe>
         </Card>
       )}
     </Container>

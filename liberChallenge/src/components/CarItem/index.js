@@ -48,6 +48,7 @@ export default function ReportItem({ data }) {
           <ValueContainer>
             <TypeCurrency>R$</TypeCurrency>
             <ValueCurrency>-</ValueCurrency>
+            {/* Pela forma como são estruturas as requisições à API, não conseguir obter o informação necessária para preencher o campo PREÇO, por isso é passado o valor "-" */}
           </ValueContainer>
         </Info>
       </Left>
