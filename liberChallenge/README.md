@@ -1,6 +1,4 @@
 <h1 align="center">
-    <img alt="GoBarber API" src="./asset/gobarber_gostack.png" />
-    <br>
     Desafio React Native - Liber Educação
 </h1>
 
@@ -9,11 +7,9 @@
 </h4>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/patrickt26/gobarber-backend.svg">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/patrickt26/liber-react-native-challenge.svg">
 
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/patrickt26/gobarber-backend.svg">
-
-  <img alt="GitHub" src="https://img.shields.io/github/license/patrickt26/gobarber-backend.svg">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/patrickt26/liber-react-native-challenge.svg">
 </p>
 
 <p align="center">
@@ -53,23 +49,18 @@ Ao seleciona um carro da lista apresentada na página principal, o usuário é r
 
 As principais tecnologias utilizadas foram:
 
--  [Node.js][nodejs]
--  [Express](https://expressjs.com/)
--  [nodemon](https://nodemon.io/)
--  [Sucrase](https://github.com/alangpierce/sucrase)
--  [Docker](https://www.docker.com/docker-community)
--  [Sequelize](http://docs.sequelizejs.com/)
--  [PostgreSQL](https://www.postgresql.org/)
--  [node-postgres](https://www.npmjs.com/package/pg)
--  [VS Code][vc] com [ESLint][vceslint] e [EditorConfig][vceditconfig]
--  [Prettier][prettier]
+-  [React Native](https://facebook.github.io/react-native/)(v.0.61.5)
+-  [Axios](https://github.com/axios/axios)(v.0.19.2)
+-  [React Navigation](https://reactnavigation.org)(v.4.1.1)
+-  [React Vector Icons](https://github.com/oblador/react-native-vector-icons)(v.6.6.0)
+-  [Styled Components](https://styled-components.com)(v.5.0.1)
+-  [VS Code][vc] com [ESLint][vceslint](v.6.8.0) e [EditorConfig][vceditconfig](v.0.14.4)
+-  [Prettier][prettier](v.1.19.1)
 
 ---
 
 Feito com ♥ por Patrick Thomaz :wave: [Get in touch!](https://www.linkedin.com/in/patrick-thomaz/)
 
-[nodejs]: https://nodejs.org/
-[yarn]: https://yarnpkg.com/
 [vc]: https://code.visualstudio.com/
 [vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
 [vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
