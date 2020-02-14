@@ -53,12 +53,19 @@ export default function Home({navigation}) {
             `carros/marcas/${codeMarcas[indexMarcas]}/modelos/${codeModelos[indexModels]}/anos/${year}`
           );
 
-          const {Marca, Modelo, Valor, Combustivel, CodigoFipe} = data;
+          const {
+            Marca,
+            Modelo,
+            AnoModelo,
+            Valor,
+            Combustivel,
+            CodigoFipe,
+          } = data;
 
           arrayCars.push({
             marca: Marca,
             shortModelo: Modelo.split(/[0-9][.][0-9]/g)[0],
-            fullModelo: Modelo,
+            anoModelo: AnoModelo,
             cambioManual: Modelo.match('Man') !== null ? 'Manual' : false,
             cambioAutomatico:
               Modelo.match('Aut') !== null ? 'Automático' : false,
